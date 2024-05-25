@@ -1,0 +1,85 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Make Reservation</h1>
+                <form action="/make-reservation" method="post" class="needs-validation" novalidate>
+
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control needs-validation" placeholder="First name" aria-label="First name">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control needs-validation" placeholder="Last name" aria-label="Last name">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <input type="email" class="form-control needs-validation" placeholder="Email address" aria-label="Email Address">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <input type="text" class="form-control needs-validation" placeholder="Phone number" aria-label="Phone number">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Make Reservation</button>
+                        </div>
+                    </div>
+
+                    <!--                <div class="mb-3 form-check">-->
+                    <!--                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+                    <!--                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+                    <!--                </div>-->
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+{{end}}
+
+{{define "js"}}
+
+<script>
+
+    document.getElementById("search-availability").addEventListener("click", function () {
+        let html = `
+        <form id="check-availability-form" action="" method="post" novalidate class="needs-validation">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-row" id="reservation-dates-modal">
+                        <div class="col">
+                            <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                        </div>
+                        <div class="col">
+                            <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        `;
+        attention.custom({
+            title: 'Choose your dates',
+            msg: html,
+        });
+    })
+
+
+    document.getElementById("search-availability").addEventListener("click", function () {
+        notify("message", "success");
+    })
+
+    const elem = document.getElementById('reservation-dates');
+    const rangepicker = new DateRangePicker(elem, {
+        format: "yyyy-mm-dd",
+    });
+</script>
+
+{{end}}

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"building-web-apps-with-go/pkg/config"
-	"building-web-apps-with-go/pkg/handlers"
-	"building-web-apps-with-go/pkg/render"
+	"building-web-apps-with-go/internal/config"
+	"building-web-apps-with-go/internal/handlers"
+	"building-web-apps-with-go/internal/render"
 	"fmt"
 	"github.com/alexedwards/scs/v2"
 	"log"
